@@ -1,0 +1,24 @@
+{
+	"user.betplayer.credentials": {
+		"bwin": {
+			"username": "",
+			"password": "",
+			"active": false
+		}
+	},
+	"user.site.extensions": {
+		"bet365": ".com"
+	},
+	"user.betplayer.fixedReturns": 6,
+	"user.betplayer.roundDownDigit": 1,
+	"user.betplayer.modes": ["prematch", "live"],
+	"user.betplayer.sports": ["tennis", "football"],
+	"user.betplayer.betOddsRange": [1.3, 79.8],
+	"user.betplayer.rebetOddsFluctuation": 0.5,
+	"user.proxies.countries": {},
+	"user.proxies.turnOn": false,
+	"user.proxies.account": {
+		"username": "",
+		"password": ""
+	}
+}

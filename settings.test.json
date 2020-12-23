@@ -1,0 +1,53 @@
+{
+	"common.host": "localhost",
+	"common.port": 3005,
+	"common.app": "admin",
+	"common.proxy": {
+		"host": "",
+		"port": 0
+	},
+	"common.proxy.countries": [
+		"GB",
+		"GR",
+		"ES",
+		"PL",
+		"PT",
+		"IT",
+		"SE",
+		"FR",
+		"AU",
+		"TR",
+		"NL",
+		"BE",
+		"UA",
+		"KR",
+		"JP",
+		"PH",
+		"TW",
+		"ZA"
+	],
+	"scrapper.bookmakers": [
+		{
+			"name": "bwin",
+			"sport": "tennis",
+			"url": "https://livebetting.bwin.com/en/live#/overview/",
+			"script": "live-tennis.js",
+			"isLive": true,
+			"active": true
+		}
+	],
+	"scrapper.capacity": 3,
+	"scrapper.prematch.interval": 1800,
+	"scrapper.live.interval": 300,
+	"site.extensions": {
+		"bwin": [".com"]
+	},
+	"betplayer.oddsPanel": true,
+	"betplayer.bookmakers": [
+		{
+			"name": "bwin",
+			"homeUrl": "https://sports.bwin.com/en/sports",
+			"loginUrl": "https://sports.bwin.com/en/sports"
+		}
+	]
+}

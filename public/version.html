@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ubetia-Update</title>
+</head>
+
+<body>
+    <div>
+        <div>Current version: <span id="curver" style="padding-right:15px">vX.Y.Z</span> Next version:<span id='nextver'>vX.Y.Z</span></div>
+    </div>
+
+    <div style="height:30px;background-color:rgb(193, 225, 251)">
+        <div id="progress" style="width:0.1%;height: 100%;background-color:#2196f3"></div>
+    </div>
+    <div id="message1" style="color:black"></div>
+    <div id="message2" style="color:black"></div>
+    <div id="error" style="color:red"></div>
+    <script>
+        // Display the current version
+        const queryParms = new URLSearchParams(window.location.search);
+        const curver = queryParms.get('curver');
+        const nextver = queryParms.get('nextver');
+        document.getElementById('curver').innerText = curver;
+        document.getElementById('nextver').innerText = nextver;
+        // Listen for messages
+        const { ipcRenderer } = require('electron');
+        ipcRenderer.on('message', (event, { msg_type, ...rest }) => {
+            console.log('message', msg_type, rest);
+            switch (msg_type) {
+
+                case 'download_progress':
+                    {
+                        const { totalBytes, bytesDone, perc } = rest;
+                        const progressBar = document.getElementById('progress');
+                        progressBar.style.width = perc + '%';
+                        const msgNode = document.getElementById('message1');
+                        msgNode.innerText = 'total bytes:' + totalBytes + ' downloaded:' + bytesDone;
+                    }
+                    break;
+                case 'quitAndPatch':
+                    {
+                        const msgNode = document.getElementById('message2');
+                        msgNode.innerText = 'applying patch ...';
+                    }
+
+                    break;
+                case 'error':
+                    {
+                        const msgNode = document.getElementById('error');
+                        msgNode.innerText = rest.msg;
+                        msgNode.style.color = 'red';
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+
+        })
+    </script>
+</body>
+
+</html>
